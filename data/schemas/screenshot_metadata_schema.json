@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "screenshot_metadata_schema.json",
+  "title": "Screenshot Metadata Schema",
+  "description": "Schema for screenshot metadata in HueCIT Chatbot RAG pipeline",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["screen_id", "doc_id", "screen_type", "source_path"],
+  "properties": {
+    "screen_id": {
+      "type": "string",
+      "description": "Unique screenshot identifier",
+      "pattern": "^screen-[a-zA-Z0-9_-]+$"
+    },
+    "doc_id": {
+      "type": "string",
+      "description": "Reference to parent document"
+    },
+    "screen_type": {
+      "type": "string",
+      "description": "Screenshot type",
+      "enum": ["error", "success", "info"]
+    },
+    "domain_id": {
+      "type": "string",
+      "description": "Domain identifier (D1-D7)",
+      "enum": ["D1", "D2", "D3", "D4", "D5", "D6", "D7"]
+    },
+    "function_area": {
+      "type": "string",
+      "description": "Functional area within domain"
+    },
+    "error_codes": {
+      "type": "array",
+      "description": "Error codes visible in screenshot",
+      "items": {
+        "type": "string"
+      }
+    },
+    "screen_context": {
+      "type": "string",
+      "description": "Context description for the screenshot"
+    },
+    "source_path": {
+      "type": "string",
+      "description": "Path to original screenshot file"
+    },
+    "ocr_ready": {
+      "type": "boolean",
+      "description": "Whether screenshot is ready for OCR processing",
+      "default": false
+    },
+    "annotation_status": {
+      "type": "string",
+      "description": "Annotation status",
+      "enum": ["pending", "complete", "review"],
+      "default": "pending"
+    },
+    "preprocessing_pipeline": {
+      "type": "string",
+      "description": "Preprocessing pipeline applied",
+      "enum": ["basic", "enhanced", "none"]
+    },
+    "blur_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Blur quality score (higher = sharper)"
+    },
+    "contrast_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Contrast quality score"
+    },
+    "ocr_readiness": {
+      "type": "string",
+      "description": "OCR readiness decision",
+      "enum": ["ready", "needs_enhanced", "needs_recollection"]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": true
+}
