@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "query_schema.json",
+  "title": "Query Schema",
+  "description": "Schema for benchmark queries in HueCIT Chatbot RAG pipeline",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["query_id", "query_text"],
+  "properties": {
+    "query_id": {
+      "type": "string",
+      "description": "Unique query identifier",
+      "pattern": "^q-[a-zA-Z0-9_-]+$"
+    },
+    "query_text": {
+      "type": "string",
+      "description": "Query text content",
+      "minLength": 1
+    },
+    "query_type": {
+      "type": "string",
+      "description": "Query type classification",
+      "enum": ["factual", "procedural", "diagnostic"],
+      "default": "factual"
+    },
+    "difficulty": {
+      "type": "string",
+      "description": "Query difficulty level",
+      "enum": ["easy", "medium", "hard"],
+      "default": "medium"
+    },
+    "domain_id": {
+      "type": "string",
+      "description": "Domain identifier (D1-D7)",
+      "enum": ["D1", "D2", "D3", "D4", "D5", "D6", "D7"]
+    },
+    "function_area": {
+      "type": "string",
+      "description": "Functional area within domain"
+    },
+    "expected_answer": {
+      "type": "string",
+      "description": "Expected answer for benchmarking"
+    },
+    "reference_doc_ids": {
+      "type": "array",
+      "description": "Reference document IDs that should answer this query",
+      "items": {
+        "type": "string"
+      }
+    },
+    "reference_screen_ids": {
+      "type": "array",
+      "description": "Reference screenshot IDs",
+      "items": {
+        "type": "string"
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,115 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "document_metadata_schema.json",
+  "title": "Document Metadata Schema",
+  "description": "Schema for document metadata in HueCIT Chatbot RAG pipeline",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["doc_id", "title", "content", "parse_status"],
+  "properties": {
+    "doc_id": {
+      "type": "string",
+      "description": "Unique document identifier",
+      "pattern": "^doc-[a-zA-Z0-9_-]+$"
+    },
+    "title": {
+      "type": "string",
+      "description": "Document title",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "domain_id": {
+      "type": "string",
+      "description": "Domain identifier (D1-D7)",
+      "enum": ["D1", "D2", "D3", "D4", "D5", "D6", "D7"],
+      "default": "D4"
+    },
+    "function_area": {
+      "type": "string",
+      "description": "Functional area within domain"
+    },
+    "source_type": {
+      "type": "string",
+      "description": "Original file format",
+      "enum": ["pdf", "docx", "md", "html"]
+    },
+    "source_path": {
+      "type": "string",
+      "description": "Path to original source file"
+    },
+    "language": {
+      "type": "string",
+      "description": "Document language",
+      "enum": ["vi", "en"],
+      "default": "vi"
+    },
+    "parse_status": {
+      "type": "string",
+      "description": "Parse result status",
+      "enum": ["success", "partial", "failed"]
+    },
+    "content": {
+      "type": "string",
+      "description": "Extracted text content",
+      "minLength": 0
+    },
+    "headings": {
+      "type": "array",
+      "description": "Extracted headings with hierarchy",
+      "items": {
+        "type": "object",
+        "required": ["level", "text"],
+        "properties": {
+          "level": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 6
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "sections": {
+      "type": "array",
+      "description": "Document sections with heading paths",
+      "items": {
+        "type": "object",
+        "required": ["heading_path", "text", "level"],
+        "properties": {
+          "heading_path": {
+            "type": "string",
+            "description": "Full heading path e.g. 'Main > Sub > Detail'"
+          },
+          "text": {
+            "type": "string"
+          },
+          "level": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 6
+          }
+        }
+      }
+    },
+    "quality_score": {
+      "type": "number",
+      "description": "Overall quality score (0-100)",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  },
+  "additionalProperties": true
+}

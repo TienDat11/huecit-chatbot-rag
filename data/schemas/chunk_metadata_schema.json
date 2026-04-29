@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "chunk_metadata_schema.json",
+  "title": "Chunk Metadata Schema",
+  "description": "Schema for document chunk metadata in HueCIT Chatbot RAG pipeline",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["chunk_id", "doc_id", "chunk_order", "chunk_method", "chunk_text"],
+  "properties": {
+    "chunk_id": {
+      "type": "string",
+      "description": "Unique chunk identifier",
+      "pattern": "^.+_(fixed|struct)_[0-9]{4}$"
+    },
+    "doc_id": {
+      "type": "string",
+      "description": "Source document ID"
+    },
+    "chunk_order": {
+      "type": "integer",
+      "description": "Sequential order in document",
+      "minimum": 0
+    },
+    "chunk_method": {
+      "type": "string",
+      "description": "Chunking method used",
+      "enum": ["fixed", "structure"]
+    },
+    "window_size": {
+      "type": "integer",
+      "description": "Token window size (fixed method)",
+      "minimum": 1
+    },
+    "overlap_size": {
+      "type": "integer",
+      "description": "Token overlap size (fixed method)",
+      "minimum": 0
+    },
+    "heading_path": {
+      "type": "string",
+      "description": "Full heading path (structure method)"
+    },
+    "section_title": {
+      "type": "string",
+      "description": "Last heading in path (structure method)"
+    },
+    "section_depth": {
+      "type": "integer",
+      "description": "Heading level depth (structure method)"
+    },
+    "char_start": {
+      "type": "integer",
+      "description": "Start character position in source document"
+    },
+    "char_end": {
+      "type": "integer",
+      "description": "End character position in source document"
+    },
+    "token_estimate": {
+      "type": "integer",
+      "description": "Estimated token count",
+      "minimum": 0
+    },
+    "chunk_text": {
+      "type": "string",
+      "description": "Actual text content of the chunk"
+    },
+    "heading_context": {
+      "type": "string",
+      "description": "Nearest heading above chunk"
+    }
+  },
+  "additionalProperties": true
+}

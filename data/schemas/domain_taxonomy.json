@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "domain_taxonomy.json",
+  "title": "Domain Taxonomy",
+  "description": "Domain taxonomy for HueCIT Chatbot Technical Support RAG system",
+  "version": "1.0.0",
+  "domains": [
+    {
+      "domain_id": "D1",
+      "name": "Authentication & User Management",
+      "function_areas": ["login", "logout", "password_reset", "profile_management", "session_management", "role_management"],
+      "characteristic_errors": ["AUTH001", "LOGIN_FAILED", "SESSION_EXPIRED", "INVALID_CREDENTIALS", "ACCOUNT_LOCKED", "TOKEN_EXPIRED"]
+    },
+    {
+      "domain_id": "D2",
+      "name": "Database Operations",
+      "function_areas": ["connection", "query_execution", "backup", "restore", "migration", "indexing", "replication"],
+      "characteristic_errors": ["DB001", "CONNECTION_TIMEOUT", "QUERY_FAILED", "DEADLOCK", "CONSTRAINT_VIOLATION", "POOL_EXHAUSTED"]
+    },
+    {
+      "domain_id": "D3",
+      "name": "Network & Connectivity",
+      "function_areas": ["vpn", "firewall", "dns", "proxy", "ssl_tls", "load_balancer", "api_gateway"],
+      "characteristic_errors": ["NET001", "VPN_CONNECTION_FAILED", "DNS_RESOLUTION_ERROR", "SSL_HANDSHAKE_FAILED", "CONNECTION_REFUSED", "TIMEOUT"]
+    },
+    {
+      "domain_id": "D4",
+      "name": "Application Errors",
+      "function_areas": ["crash_handling", "exception_management", "memory_management", "thread_management", "configuration", "logging"],
+      "characteristic_errors": ["APP001", "NULL_POINTER", "OUT_OF_MEMORY", "STACK_OVERFLOW", "CONFIG_ERROR", "DEPENDENCY_MISSING"]
+    },
+    {
+      "domain_id": "D5",
+      "name": "File System",
+      "function_areas": ["permissions", "storage", "file_access", "directory_management", "disk_quota", "backup_archive"],
+      "characteristic_errors": ["FS001", "PERMISSION_DENIED", "FILE_NOT_FOUND", "DISK_FULL", "PATH_TOO_LONG", "IO_ERROR"]
+    },
+    {
+      "domain_id": "D6",
+      "name": "Security & Compliance",
+      "function_areas": ["encryption", "audit", "compliance", "access_control", "vulnerability", "incident_response"],
+      "characteristic_errors": ["SEC001", "ACCESS_VIOLATION", "COMPLIANCE_VIOLATION", "CERTIFICATE_INVALID", "BRUTE_FORCE", "DATA_LEAK"]
+    },
+    {
+      "domain_id": "D7",
+      "name": "Performance & Monitoring",
+      "function_areas": ["logs", "metrics", "alerts", "performance_optimization", "capacity_planning", "health_check"],
+      "characteristic_errors": ["PERF001", "HIGH_CPU", "SLOW_RESPONSE", "MEMORY_LEAK", "QUEUE_BACKLOG", "SERVICE_DEGRADED"]
+    }
+  ]
+}
