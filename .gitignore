@@ -1,0 +1,73 @@
+# Byte-compiled / optimized
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data files - DO NOT commit raw data
+data/documents/raw/*
+data/documents/processed/*
+data/documents/catalog/*
+data/screenshots/raw/*
+data/screenshots/processed/*
+data/screenshots/catalog/*
+data/benchmark_inputs/*
+
+# Keep schema files and .gitkeep
+!data/schemas/
+!data/**/.gitkeep
+
+# Output - DO NOT commit pipeline output
+output/
+
+# Reports - generated, not versioned
+reports/*.csv
+reports/*.png
+reports/*.html
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Distribution
+dist/
+build/
+*.egg-info/
+*.egg
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# Models cache (large files)
+models/
+*.pt
+*.pth
+*.bin
+*.onnx
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.local
