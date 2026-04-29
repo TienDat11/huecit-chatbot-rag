@@ -30,3 +30,13 @@ class QualityScorer(Protocol):
     def score(self, document: dict) -> float:
         """Score document quality."""
         ...
+
+
+from src.core.schema_validator import (  # noqa: E402
+    validate_document,
+    validate_screenshot,
+    validate_query,
+    validate_chunk,
+    load_domain_taxonomy,
+    validate_batch,
+)
