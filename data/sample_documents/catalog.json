@@ -1,0 +1,58 @@
+[
+  {
+    "filename": "D1_authentication_login.md",
+    "doc_id": "doc-D1_authentication_login",
+    "title": "Hướng dẫn xác thực và đăng nhập hệ thống",
+    "domain_id": "D1",
+    "size_bytes": 4516,
+    "line_count": 121
+  },
+  {
+    "filename": "D2_database_connection.md",
+    "doc_id": "doc-D2_database_connection",
+    "title": "Khắc phục lỗi kết nối cơ sở dữ liệu",
+    "domain_id": "D2",
+    "size_bytes": 4388,
+    "line_count": 172
+  },
+  {
+    "filename": "D3_network_config.md",
+    "doc_id": "doc-D3_network_config",
+    "title": "Cấu hình và xử lý sự cố mạng",
+    "domain_id": "D3",
+    "size_bytes": 3800,
+    "line_count": 163
+  },
+  {
+    "filename": "D4_application_portal.md",
+    "doc_id": "doc-D4_application_portal",
+    "title": "Hướng dẫn sử dụng ứng dụng CIT Portal",
+    "domain_id": "D4",
+    "size_bytes": 4418,
+    "line_count": 149
+  },
+  {
+    "filename": "D5_filesystem_management.md",
+    "doc_id": "doc-D5_filesystem_management",
+    "title": "Hướng dẫn quản lý tệp tin và thư mục",
+    "domain_id": "D5",
+    "size_bytes": 4877,
+    "line_count": 181
+  },
+  {
+    "filename": "D6_security_access_control.md",
+    "doc_id": "doc-D6_security_access_control",
+    "title": "Hướng dẫn bảo mật và phân quyền hệ thống",
+    "domain_id": "D6",
+    "size_bytes": 5407,
+    "line_count": 177
+  },
+  {
+    "filename": "D7_performance_optimization.md",
+    "doc_id": "doc-D7_performance_optimization",
+    "title": "Tối ưu hóa hiệu suất hệ thống",
+    "domain_id": "D7",
+    "size_bytes": 7396,
+    "line_count": 343
+  }
+]
