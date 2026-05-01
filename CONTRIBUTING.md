@@ -149,6 +149,55 @@ make security  # Security scan
 
 ---
 
+## Project Management
+
+### Source of Truth
+
+**GitHub Issues** và **GitHub Projects** là nguồn chân lý cho tracking công việc:
+
+- **GitHub Issues**: Labels (epic, priority, type, owner, estimate)
+- **GitHub Projects**: Status tracking (backlog → in-progress → review → done)
+
+### Status Workflow
+
+```
+backlog → in-progress → review → done
+```
+
+| Status | Mô tả |
+|--------|-------|
+| `backlog` | Task đã được định nghĩa, chờ assign |
+| `in-progress` | Đang thực hiện |
+| `review` | Task hoàn thành, chờ review |
+| `done` | Task đã được merge/complete |
+
+### Xem/Quản lý Projects
+
+```bash
+# Liệt kê Projects
+gh project list --owner TienDat11
+
+# Xem items trong Project
+gh project view <PROJECT_NUMBER> --owner TienDat11
+
+# Thêm issue vào Project
+gh project add-item <PROJECT_NUMBER> --owner TienDat11 --url <ISSUE_URL>
+```
+
+### Required Scope
+
+Để sử dụng `gh project` commands, cần authenticate với scope `read:project`:
+
+```bash
+# Refresh authentication với scope cần thiết
+gh auth refresh -s read:project
+
+# Verify scopes
+gh auth status
+```
+
+---
+
 ## Review Process
 
 1. Tất cả PR cần ít nhất 1 review

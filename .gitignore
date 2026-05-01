@@ -29,8 +29,9 @@ data/screenshots/processed/*
 data/screenshots/catalog/*
 data/benchmark_inputs/*
 
-# Keep schema files and .gitkeep
+# Keep schema files, sample documents, and .gitkeep
 !data/schemas/
+!data/sample_documents/
 !data/**/.gitkeep
 
 # Output - DO NOT commit pipeline output
@@ -54,9 +55,14 @@ build/
 
 # Testing
 .pytest_cache/
+.ruff_cache/
 .coverage
 htmlcov/
 .mypy_cache/
+
+# Agent/runtime state
+.omc/
+.omx/
 
 # Models cache (large files)
 models/

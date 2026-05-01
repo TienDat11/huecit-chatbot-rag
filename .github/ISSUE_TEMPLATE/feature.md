@@ -83,9 +83,9 @@ body:
       options:
         - A - Setup & Governance
         - B - Data Readiness
-        - C - RAG Text Pipeline
-        - D - Vision/OCR Pipeline
-        - E - Integration & Quality
+        - C - Chunking & Retrieval
+        - D - Text RAG E2E
+        - E - Image Pipeline
         - F - QA & Hardening
     validations:
       required: true
