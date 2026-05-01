@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -11,13 +12,11 @@ import numpy as np
 
 from src.week1.document_parser import parse_file
 
-
 DEFAULT_EMBEDDING_MODEL = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 
 
 class Embedder(Protocol):
-    def encode(self, texts: list[str]) -> np.ndarray:
-        ...
+    def encode(self, texts: list[str]) -> np.ndarray: ...
 
 
 @dataclass
@@ -82,6 +81,23 @@ class SentenceTransformerEmbedder:
             normalize_embeddings=self.normalize_embeddings,
         )
         return np.asarray(embeddings, dtype=np.float32)
+
+
+class HashingTextEmbedder:
+    def __init__(self, dimension: int = 2048) -> None:
+        if dimension <= 0:
+            raise ValueError("dimension must be positive")
+        self.dimension = dimension
+        self.model_name = f"hashing-text-embedder-{dimension}"
+
+    def encode(self, texts: list[str]) -> np.ndarray:
+        vectors = np.zeros((len(texts), self.dimension), dtype=np.float32)
+        for row, text in enumerate(texts):
+            for token in text.lower().split():
+                digest = hashlib.sha256(token.encode("utf-8")).digest()
+                index = int.from_bytes(digest[:8], byteorder="big") % self.dimension
+                vectors[row, index] += 1.0
+        return vectors
 
 
 class FaissVectorIndex:
@@ -223,7 +239,9 @@ def build_chunk_records(documents: list[dict[str, Any]]) -> list[ChunkRecord]:
         sections = document.get("sections") or []
         if sections:
             for idx, section in enumerate(sections, start=1):
-                section_text = _compose_chunk_text(document, section.get("text", ""), section.get("heading_path"))
+                section_text = _compose_chunk_text(
+                    document, section.get("text", ""), section.get("heading_path")
+                )
                 chunks.append(
                     ChunkRecord(
                         chunk_id=f"{document['doc_id']}#section-{idx}",
@@ -344,6 +362,7 @@ __all__ = [
     "DEFAULT_EMBEDDING_MODEL",
     "Embedder",
     "FaissVectorIndex",
+    "HashingTextEmbedder",
     "RetrievalEvaluation",
     "SearchHit",
     "SentenceTransformerEmbedder",
