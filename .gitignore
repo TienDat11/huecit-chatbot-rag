@@ -55,9 +55,14 @@ build/
 
 # Testing
 .pytest_cache/
+.ruff_cache/
 .coverage
 htmlcov/
 .mypy_cache/
+
+# Agent/runtime state
+.omc/
+.omx/
 
 # Models cache (large files)
 models/
